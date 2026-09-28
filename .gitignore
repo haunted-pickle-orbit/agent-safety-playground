@@ -1,0 +1,12 @@
+node_modules/
+dist/
+.qa/
+
+test-results/
+playwright-report/
+# Local design references and historical QA notes
+docs/DESIGN.md
+docs/VERIFICATION.md
+docs/concept.png
+docs/desktop.png
+docs/mobile.png

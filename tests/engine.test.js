@@ -1,0 +1,8 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {evaluate,normalizePath,simulate} from '../src/engine.js';import {lessons} from '../src/lessons.js';
+for(const lesson of lessons){
+ test(lesson.id+': baseline changes unsafe state but completes task',()=>{const r=simulate(lesson);assert.equal(r.leaked,true);assert.equal(r.complete,true);});
+ for(const c of lesson.controls) test(lesson.id+': '+c.key+' independently blocks unsafe action and preserves task',()=>{const r=simulate(lesson,{[c.key]:true});assert.equal(r.passed,true);assert.equal(r.events.find(e=>e.malicious).allowed,false);if(lesson.id==='web')assert.deepEqual(r.state.sent.map(x=>x.to),['team@example.test']);if(lesson.id==='files')assert.deepEqual(r.state.read,['/workspace/notes.txt']);if(lesson.id==='tools')assert.deepEqual(r.state.grants,[]);});
+}
+test('canonical directory boundary rejects traversal, prefix collision and invalid paths',()=>{for(const path of ['/workspace/../private/keys.txt','/workspace-other/a','../workspace/a','/../../workspace/a','/workspace/..','/workspace/evil\\file'])assert.equal(evaluate({tool:'read_file',path},{directory:true}).allowed,false,path);assert.equal(normalizePath('/workspace/a/../notes.txt'),'/workspace/notes.txt');assert.equal(evaluate({tool:'read_file',path:'/workspace/a/../notes.txt'},{directory:true}).allowed,true);});
+test('recipient matching is exact',()=>{assert.equal(evaluate({tool:'send_email',to:'team@example.test.evil'},{recipient:true}).allowed,false);});
+test('fresh runs do not share mutated state',()=>{const a=simulate(lessons[0]);a.state.sent.length=0;assert.equal(simulate(lessons[0]).state.sent.length,2);});
