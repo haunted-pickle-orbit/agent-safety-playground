@@ -1,6 +1,6 @@
 # Agent Safety Playground
 
-[English](README.en.md) · [GitHub](https://github.com/haunted-pickle-orbit/agent-safety-playground)
+[在线体验](https://haunted-pickle-orbit.github.io/agent-safety-playground/) · [English](README.en.md) · [GitHub](https://github.com/haunted-pickle-orbit/agent-safety-playground)
 
 ![界面预览](docs/preview.png)
 
@@ -71,7 +71,7 @@ $env:PLAYWRIGHT_CHANNEL = 'msedge'
 npm.cmd run test:e2e
 ```
 
-浏览器测试自动构建并使用 127.0.0.1:4175，运行前确保该端口空闲。项目已配置 GitHub Actions 检查流程，发布后可自动运行；当前尚未在远端执行。
+浏览器测试自动构建并使用 127.0.0.1:4175，运行前确保该端口空闲。GitHub Actions 会在检查通过后自动更新在线体验。
 
 ## 文件结构
 
@@ -84,4 +84,4 @@ npm.cmd run test:e2e
 
 ## 后续
 
-下一步用真实新手试用验证讲解效果，并请安全方向同学审阅课程。真实模型接入、在线演示部署和正式开源许可选择尚未完成。
+下一步用真实新手试用验证讲解效果，并请安全方向同学审阅课程。真实模型接入尚未完成。项目采用 [MIT 许可证](LICENSE)。

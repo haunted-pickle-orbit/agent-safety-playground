@@ -1,6 +1,6 @@
 # Agent Safety Playground
 
-[简体中文](README.md) · [GitHub](https://github.com/haunted-pickle-orbit/agent-safety-playground)
+[Live demo](https://haunted-pickle-orbit.github.io/agent-safety-playground/) · [简体中文](README.md) · [GitHub](https://github.com/haunted-pickle-orbit/agent-safety-playground)
 
 ![App preview](docs/preview.png)
 
@@ -30,8 +30,8 @@ npx playwright install chromium
 npm run test:e2e
 ```
 
-The browser suite builds the application and serves it at port 4175, which must be free. On Windows, set PLAYWRIGHT_CHANNEL=msedge to use an installed Edge browser. A GitHub Actions workflow is included but has not run remotely yet.
+The browser suite builds the application and serves it at port 4175, which must be free. On Windows, set PLAYWRIGHT_CHANNEL=msedge to use an installed Edge browser. GitHub Actions updates the live demo after checks pass.
 
 Approval is trusted lesson configuration bound to exact recipient and content; actions cannot approve themselves. Unsupported tools and invalid arguments are denied. Failed prerequisites prevent dependent actions from executing.
 
-The virtual path model does not cover symlinks or races. Real model integration, external technical review, public deployment and a formal open-source license remain future work.
+The virtual path model does not cover symlinks or races. Real model integration and external technical review remain future work. The project is distributed under the [MIT License](LICENSE).
